@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kamuchy · Del catálogo a la experiencia</title>
+  <meta name="description" content="Propuesta de iniciativas para la experiencia digital de Kamuchy.">
+  <link rel="icon" href="https://i0.wp.com/kamuchy.co/wp-content/uploads/2024/12/cropped-faviconkm.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Belleza&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=amulya@400,700,401&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="hdr">
+    <a href="#inicio" onclick="closeDetail()"><img src="https://i0.wp.com/kamuchy.co/wp-content/uploads/2025/01/logoprincipal.png" alt="Kamuchy"></a>
+    <nav>
+      <a href="#iniciativas">Iniciativas</a>
+      <a href="#contexto">Contexto</a>
+      <a href="#siguientes">Siguientes pasos</a>
+    </nav>
+    <a class="btn" href="#iniciativas">Ver iniciativas</a>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <span class="eyebrow lines">Propuesta de experiencia digital · 2026</span>
+      <h1>Del catálogo<br>a la experiencia</h1>
+      <p>Siete ideas para que comprar en kamuchy.co se sienta como visitar uno de nuestros centros de experiencia: con asesoría, con detalle y pensando en cada cliente.</p>
+      <div class="cta">
+        <a class="btn" href="#iniciativas" onclick="openDetail(0); return false;">Comenzar recorrido</a>
+        <span class="circle">→</span>
+      </div>
+    </section>
+
+    <div class="row-wrap" id="iniciativas">
+      <div class="row" id="row"></div>
+      <div class="row-nav">
+        <button aria-label="Anterior" onclick="moveFocus(-1)">←</button>
+        <div class="dots" id="dots"></div>
+        <button aria-label="Siguiente" onclick="moveFocus(1)">→</button>
+      </div>
+      <p class="hint">Usa las flechas del teclado para recorrer y Enter para abrir una iniciativa.</p>
+    </div>
+
+    <section class="section" id="contexto">
+      <span class="eyebrow">Contexto</span>
+      <h2>Un producto premium merece una experiencia premium</h2>
+      <p class="lead">El cliente de Kamuchy ya confía en la marca. La oportunidad no es vender más a la fuerza, sino que el sitio esté a la altura de lo que encuentra en un centro de experiencia: asesoría, detalle y atención personal.</p>
+      <div class="split">
+        <div class="panel">
+          <h3>Hoy</h3>
+          <ul>
+            <li>Una tienda en línea que funciona como catálogo.</li>
+            <li>La asesoría ocurre solo por WhatsApp y en tienda.</li>
+            <li>Fichas sin reseñas, sin guía de tallas y con pocas fotos.</li>
+            <li>La cuenta no ofrece nada al cliente.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Hacia dónde vamos</h3>
+          <ul>
+            <li>Un sitio que asesora, recuerda y acompaña.</li>
+            <li>Experiencias que invitan a explorar.</li>
+            <li>Los centros de experiencia conectados con lo digital.</li>
+            <li>Que el cliente diga: “me sentí bien asesorada”.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><b>Asesora</b><span>Como lo haría una experta en descanso.</span></div>
+        <div class="pillar"><b>Personaliza</b><span>Reconoce quién es y qué necesita cada cliente.</span></div>
+        <div class="pillar"><b>Eleva lo premium</b><span>Cada detalle comunica calidad.</span></div>
+        <div class="pillar"><b>Invita a explorar</b><span>El sitio se recorre con gusto.</span></div>
+      </div>
+    </section>
+
+    <section class="band" id="siguientes">
+      <div class="section">
+        <span class="eyebrow">Siguientes pasos</span>
+        <h2>Cuéntennos qué les inspira</h2>
+        <p class="lead">Recorran las iniciativas con calma y respóndannos por correo cuáles les gustaría priorizar. Con eso definimos el alcance y la propuesta económica.</p>
+        <div class="split">
+          <div class="panel">
+            <h3>Para priorizar</h3>
+            <ul>
+              <li>¿Cuáles son imprescindibles, cuáles interesantes y cuáles pueden esperar?</li>
+              <li>¿Hay alguna idea que quieran ajustar o combinar?</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Preguntas para Kamuchy</h3>
+            <ul>
+              <li>¿Quién atendería las citas y las solicitudes de asesoría?</li>
+              <li>¿El inventario de cada tienda está conectado al sitio web?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Propuesta preparada para Kamuchy · Las simulaciones son ilustrativas: precios, nombres y datos son de ejemplo.</footer>
+
+  <!-- Detail view -->
+  <article class="detail" id="detail" aria-modal="true" role="dialog">
+    <div class="side">
+      <img id="d-img" alt="">
+      <button class="close" onclick="closeDetail()">← Todas las iniciativas</button>
+    </div>
+    <div class="body" id="d-body"></div>
+  </article>
+
+  <!-- Simulation modal -->
+  <div class="sim" id="sim" onclick="if(event.target===this) closeSim()">
+    <div class="browser">
+      <div class="bar">
+        <span><i></i><i></i><i></i></span>
+        <div class="url" id="sim-url">kamuchy.co</div>
+        <span class="note">Simulación ilustrativa</span>
+        <button class="x" aria-label="Cerrar" onclick="closeSim()">×</button>
+      </div>
+      <div class="screen" id="sim-screen"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="sims.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
