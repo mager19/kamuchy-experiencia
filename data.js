@@ -1,6 +1,6 @@
 // Content for the Kamuchy proposal microsite (Spanish, client-facing).
-const IMG = "https://kamuchy.co/wp-content/uploads/";
-const LOGO = "https://i0.wp.com/kamuchy.co/wp-content/uploads/2025/01/logoprincipal.png";
+const IMG = "https://i0.wp.com/kamuchy.co/wp-content/uploads/";
+const LOGO = "https://i0.wp.com/kamuchy.co/wp-content/uploads/2024/11/logoDark.png";
 
 const INITIATIVES = [
   {
