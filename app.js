@@ -6,7 +6,7 @@ function renderRow() {
   const row = document.getElementById("row");
   const dots = document.getElementById("dots");
   row.innerHTML = INITIATIVES.map((it, i) => `
-    <button class="card${i === 0 ? " active" : ""}" data-i="${i}" onclick="openDetail(${i})">
+    <button class="card${i === 0 ? " active" : ""}" data-i="${i}" style="--d:${i}" onclick="openDetail(${i})">
       <div class="ph">
         ${it.tags[0][0] === "Ya construida" || it.tags[0][0] === "Idea exploratoria" ? `<span class="pill badge">${it.tags[0][0]}</span>` : ""}
         <img src="${it.image}" alt="" loading="lazy">
@@ -102,6 +102,33 @@ document.addEventListener("keydown", e => {
 });
 
 renderRow();
+
+// Scroll-triggered reveals and header state.
+function setupMotion() {
+  const groups = [
+    ".section > .eyebrow, .section > h2, .section > .lead",
+    ".split .panel",
+    ".pillar"
+  ];
+  groups.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.classList.add("reveal");
+      el.style.setProperty("--d", i % 4);
+    });
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  const hdr = document.querySelector(".hdr");
+  const onScroll = () => hdr.classList.toggle("scrolled", window.scrollY > 20);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+setupMotion();
+
 const startId = location.hash.slice(1);
 const startIdx = INITIATIVES.findIndex(it => it.id === startId);
 if (startIdx >= 0) openDetail(startIdx);
